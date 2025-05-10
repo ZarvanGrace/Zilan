@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fortune Teller ✨🔮</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      font-family: 'Raleway', sans-serif;
+      text-align: center;
+      padding: 50px;
+      color: #E0E0E0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 80vh;
+    }
+    h1 {
+      font-size: 1.8em;
+      margin-bottom: 10px;
+    }
+    .fortune-box {
+      background: #ffffff;
+      border: 3px dashed #ff69b4;
+      padding: 20px;
+      border-radius: 20px;
+      margin-top: 30px;
+      display: inline-block;
+      box-shadow: 0 0 15px #c0c0c0;
+      max-width: 500px;
+      color: #121212;
+    }
+    button {
+      background: #a8a8a8;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #666666;
+    }
+    footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔮 Zilan's Fortune Teller 🔮</h1>
+  <p>Your destiny awaits... Click the button to reveal your *totally accurate* fortune.</p>
+
+  <div class="fortune-box" id="fortune">✨ Click below to unlock your fate ✨</div>
+
+  <br />
+  <button onclick="tellFortune()">Reveal My Fortune</button>
+
+  <footer>Made with Stardust ✨ and DarkMagic 🔮</footer>
+
+  <script>
+    const fortunes = [
+	"You're destined to eat snacks at 2 AM and regret nothing.",
+	"You’ll fall in love with a video... again.",
+	"Your phone battery will betray you at 1%.",
+	"A cute outfit is in your future... that you'll wear nowhere.",
+	"You will trip over nothing today. It’s the universe testing your elegance.",
+	"Your crush might like your story... in 2032.",
+	"You will accidentally open the front camera and question your existence.",
+	"Great things are coming... after one more nap.",
+	"You may be tiny, but your punches come with sound effects.",
+	"Someone will call you tiny today. Their survival is uncertain.",
+	"The Stardust say you're in charge today... like every other day.",
+	"Your future involves world domination… right after snacks.",
+	"Someone will test your patience today. Pray for them.",
+	"You're not bossy. You're just always right.",
+	"A tall person will annoy you. You'll remind them height isn’t a skill."
+    ];
+
+    function tellFortune() {
+      const randomIndex = Math.floor(Math.random() * fortunes.length);
+      document.getElementById("fortune").innerText = fortunes[randomIndex];
+    }
+  </script>
+</body>
+</html>
