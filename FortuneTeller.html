@@ -67,7 +67,7 @@
   <footer>Made with Stardust ✨ and DarkMagic 🔮</footer>
 
   <script>
-    const fortunes = [
+  const fortunes = [
 	"You’ll fall in love with a movie character... again.",
 	"Your ex will text you again. Not because they care—just to ruin your day.",
 	"You will trip over nothing today. It’s the universe testing your elegance.",
@@ -158,12 +158,36 @@
 	"You will win an argument. In the shower. With perfect comebacks.",
 	"Someone’s gonna fall for you. Probably after you insult them.",
 	"The next time you say ‘I don’t care,’ you’ll be lying."
-    ];
+  ];
 
-    function tellFortune() {
-      const randomIndex = Math.floor(Math.random() * fortunes.length);
-      document.getElementById("fortune").innerText = fortunes[randomIndex];
+    // Load from localStorage or initialize
+  let shuffledFortunes = JSON.parse(localStorage.getItem("shuffledFortunes")) || shuffleArray([...fortunes]);
+  let fortuneIndex = parseInt(localStorage.getItem("fortuneIndex") || "0");
+
+  function tellFortune() {
+    if (fortuneIndex >= shuffledFortunes.length) {
+      // All shown, reshuffle
+      shuffledFortunes = shuffleArray([...fortunes]);
+      fortuneIndex = 0;
     }
+
+    // Show current fortune
+    const currentFortune = shuffledFortunes[fortuneIndex];
+    document.getElementById("fortune").innerText = currentFortune;
+
+    // Advance and save
+    fortuneIndex++;
+    localStorage.setItem("shuffledFortunes", JSON.stringify(shuffledFortunes));
+    localStorage.setItem("fortuneIndex", fortuneIndex);
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
   </script>
 </body>
 </html>
